@@ -4,8 +4,37 @@ Do tworzeniu projektu został wykorzystany tutorial https://www.youtube.com/watc
 <style>
 	body {
 		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #CCCCFF;
 	}
 </style>
 
-<canvas></canvas>
+<div style="position: relative;">
+	<p
+		style="position: absolute; z-index: 10; color: white; left: 10px;
+			top: 10px; margin: 0; font-family: Courier New, sans-serif; font-size: 16px;"
+	>
+		<span>Wynik:</span> <span id="scoreEl">0</span>
+	</p>
+	<div id="gameover-screen"
+		style="
+			display: none; 
+			position: absolute;
+			color: white;
+			align-items: center;
+			justify-content: center;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			font-family: Courier New, sans-serif;
+			font-size: 30px;		
+		"
+	>
+		GAME OVER
+	</div>
+	<canvas></canvas>
+</div>
 <script src="./index.js"></script>
