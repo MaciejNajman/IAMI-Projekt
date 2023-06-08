@@ -1,6 +1,19 @@
 <!--
-Autor projektu: Maciej Najman
-Do tworzeniu projektu został wykorzystany tutorial https://www.youtube.com/watch?v=MCVU0w73uKI -->
+Autor projektu: Maciej Najman 
+
+Wykaz źródeł:
+Chris Courses.(2022, 19 stycznia). Space Invaders Game Tutorial with JavaScript and HTML Canvas[Wideo].YouTube. https://www.youtube.com/watch?v=MCVU0w73uKI
+David Reid. (2021, 22 listopada). How to add a start screen to your javascript game in under five minutes [Wideo]. YouTube. https://www.youtube.com/watch?v=FwLMz7jMRac
+HTML Tutorial. (b. d.). W3Schools Online Web Tutorials. https://www.w3schools.com/html/
+JavaScript Tutorial. (b. d.). W3Schools Online Web Tutorials. https://www.w3schools.com/js/
+CSS Tutorial. (b. d.). W3Schools Online Web Tutorials. https://www.w3schools.com/css/
+Stack Overflow - Where Developers Learn, Share, & Build Careers. (b. d.). Stack Overflow. https://stackoverflow.com
+Glass, E. (2020, 12 października). How To Style the HTML <div> element with CSS. DigitalOcean | The Cloud for Builders. https://www.digitalocean.com/community/tutorials/how-to-style-the-html-div-element-with-css
+Space Invaders arcade cabinet — isometric pixel art tribute to a ground-breaking 8-bit game.|Space invaders arcade, Arcade, Isometric art [Obraz]. (b. d.). Pinterest. https://pl.pinterest.com/pin/146015212897564400/
+-->
+<html>
+<head>
+<title>Kosmiczni najeźdźcy</title>
 <style>
 	body {
 		margin: 0;
@@ -9,11 +22,51 @@ Do tworzeniu projektu został wykorzystany tutorial https://www.youtube.com/watc
 		align-items: center;
 		background-color: #CCCCFF;
 	}
+	
+	button {
+		border: none;
+		appearance: none;
+		outline: none;
+		font-family: Courier New, sans-serif;
+		font-size: 30px;
+		cursor: pointer;
+		text-decoration: none;
+		padding: 12px 48px 12px 48px;
+		border-radius: 4px;
+		color: white;
+		background-color: black;
+		border: 2px solid #ffffff;
+	}
+	button { transition-duration: 0.4s; }
+	button:hover {
+		font-size: 40px;
+		background-color: #05c46b;
+	}
 </style>
+</head>
 
+<body>
 <div style="position: relative;">
-	<p
-		style="position: absolute; z-index: 10; color: white; left: 10px;
+	<div id="start-screen"
+		style="
+			display:flex;
+			position: absolute;
+			align-items: center;
+			justify-content: center;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-image: url('./img/background.png');
+			background-repeat: no-repeat;
+			background-attachment: fixed;  
+			background-size: cover;
+		"
+	>
+		<button onClick="startGame()" >ROZPOCZNIJ GRĘ</button>
+	</div>
+	<p id="score-screen"
+		style="display: none; position: absolute; z-index: 10; color: white; left: 10px;
 			top: 10px; margin: 0; font-family: Courier New, sans-serif; font-size: 16px;"
 	>
 		<span>Wynik:</span> <span id="scoreEl">0</span>
@@ -32,9 +85,19 @@ Do tworzeniu projektu został wykorzystany tutorial https://www.youtube.com/watc
 			font-family: Courier New, sans-serif;
 			font-size: 30px;		
 		"
-	>
-		GAME OVER
+	>KONIEC GRY
+		<button onClick="restartGame()" 
+			style="
+				position: absolute;
+				top: 320;
+				right: auto;
+				bottom: auto;
+				left: auto;
+			"
+		>URUCHOM PONOWNIE</button>
 	</div>
 	<canvas></canvas>
 </div>
 <script src="./index.js"></script>
+</body>
+</html>

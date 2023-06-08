@@ -135,7 +135,7 @@ class InvaderProjectile {
 	}
 	
 	draw() {
-		c.fillStyle = 'white'
+		c.fillStyle = '#00ff00'
 		c.fillRect(this.position.x, this.position.y, this.width,
 		 this.height)
 	}
@@ -302,6 +302,30 @@ for (let i = 0; i < 100; i++) {
 	}))
 }
 
+//funkcja do startu gry wywoływana po nacisnieciu przycisku
+function startGame() {
+	//console.log('start game')
+	animate()
+	document.querySelector('#start-screen').style.display = 'none';
+	document.querySelector('#score-screen').style.display = 'flex';
+}
+
+//funkcja do restaru gry po przegranej
+function restartGame() {
+	
+	//Resetowanie zmiennych globalnych i eventListener (po resecie gracz i grupy Invaderów zostają w tym samym miejscu)
+	// document.querySelector('#gameover-screen').style.display = 'none';
+	// document.querySelector('#score-screen').style.display = 'flex';
+	// game.active = true
+	// game.over = false
+	// score = 0
+	// scoreEl.innerHTML = score
+	// player.opacity = 1
+	// animate()
+	
+	location.reload();
+}
+
 //funkcja do tworzenia wybuchów
 function createParticles({ object, color, fades }) {
 	//tworzenie wybuchow
@@ -321,7 +345,6 @@ function createParticles({ object, color, fades }) {
 		}))
 	}
 }
-
 
 //pętla animacji do renderowania elementów
 function animate() {
@@ -349,6 +372,7 @@ function animate() {
 		}
 	})
 	
+	//usuwanie pocisków z tablicy gdy wyleca poza obszar gry
 	invaderProjectiles.forEach((invaderProjectile, index) => {
 		if (invaderProjectile.position.y +
 			invaderProjectile.height >= canvas.height) {
@@ -484,7 +508,7 @@ function animate() {
 	}
 	
 	//console.log(frames)
-	// tworzenie fali Invaderow
+	//tworzenie fali Invaderow co losową ilość klatek (od 500min do 1000max)
 	if (frames % randomInterval === 0) {
 		grids.push(new Grid())
 		randomInterval = Math.floor(Math.random() * 500 + 500)
@@ -495,7 +519,8 @@ function animate() {
 	frames++
 }
 
-animate()
+//animate()
+
 
 addEventListener('keydown', ({key}) => {
 	//jesli gra przegrana nie reaguj na nacisniecie klawiszy
@@ -544,6 +569,7 @@ addEventListener('keyup', ({key}) => {
 			break
 		case ' ':
 			//console.log('space')
+			keys.space.pressed = false
 			break
 	}
 })
