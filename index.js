@@ -36,9 +36,6 @@ class Player {
 	}
 	
 	draw() {
-		// c.fillStyle = 'red'
-		// c.fillRect(this.position.x, this.position.y, this.width, 
-			// this.height)
 			
 		c.save()
 		c.globalAlpha = this.opacity
@@ -493,6 +490,7 @@ function animate() {
 		})
 	})
 	
+	//poruszanie gracza
 	if (keys.a.pressed && player.position.x >= 0) {
 		player.velocity.x = -7
 		player.rotation = -0.15
@@ -508,7 +506,7 @@ function animate() {
 	}
 	
 	//console.log(frames)
-	//tworzenie fali Invaderow co losową ilość klatek (od 500min do 1000max)
+	//tworzenie fali Invaderow co losową ilość klatek (od min 500kl do max 1000kl)
 	if (frames % randomInterval === 0) {
 		grids.push(new Grid())
 		randomInterval = Math.floor(Math.random() * 500 + 500)
